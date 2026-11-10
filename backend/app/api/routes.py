@@ -1,18 +1,31 @@
 
-from fastapi import APIRouter
+import requests
+
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from app.agents.devops_agent import DevOpsAgent
+from app.services.github_service import GitHubService
+from app.services.code_analyzer import CodeAnalyzer
+
 
 router = APIRouter()
 
-# Initialize AI Agent
+# Initialize Services
 agent = DevOpsAgent()
+github_service = GitHubService()
+code_analyzer = CodeAnalyzer()
 
 
-# Request model
+# Request Models
 class AgentRequest(BaseModel):
     instruction: str
+
+
+class GitHubAnalysisRequest(BaseModel):
+    owner: str
+    repo: str
+    path: str
 
 
 # Home API
@@ -41,6 +54,7 @@ def project_info():
         "features": [
             "AI Agent",
             "Code Analysis",
+            "GitHub Integration",
             "Automated Testing",
             "DevOps Automation"
         ]
@@ -54,3 +68,37 @@ def create_agent_plan(request: AgentRequest):
     result = agent.analyze_task(request.instruction)
 
     return result
+
+
+# GitHub Code Analysis API
+@router.post("/github/analyze")
+def analyze_github_code(request: GitHubAnalysisRequest):
+
+    try:
+        # Fetch code from GitHub
+        source_code = github_service.get_file_content(
+            request.owner,
+            request.repo,
+            request.path
+        )
+
+        # Analyze source code
+        analysis_result = code_analyzer.analyze_code(source_code)
+
+        return {
+            "repository": f"{request.owner}/{request.repo}",
+            "file": request.path,
+            "analysis": analysis_result
+        }
+
+    except requests.RequestException:
+        raise HTTPException(
+            status_code=502,
+            detail="Unable to fetch file from GitHub."
+        )
+
+    except (ValueError, KeyError) as error:
+        raise HTTPException(
+            status_code=400,
+            detail=str(error)
+        )
