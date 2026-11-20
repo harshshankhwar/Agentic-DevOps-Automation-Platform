@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agentic DevOps Platform</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h2>Agentic DevOps</h2>
+            </div>
+
+            <p class="menu-heading">MAIN MENU</p>
+
+            <nav>
+                <button class="nav-btn active" data-section="overview">
+                    <span>▦</span> Overview
+                </button>
+
+                <button class="nav-btn" data-section="agent">
+                    <span>🤖</span> AI Agent
+                </button>
+
+                <button class="nav-btn" data-section="github">
+                    <span>⌘</span> GitHub Analysis
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <span class="status-dot"></span>
+                Backend Connected
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>DevOps Dashboard</h1>
+                    <p>Manage your development workflow with AI</p>
+                </div>
+
+                <div class="user-profile">
+                    <span>⚡</span>
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Developer</small>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+
+                <div class="welcome">
+                    <div>
+                        <h2>Welcome to Agentic DevOps 🚀</h2>
+                        <p>Your AI-powered DevOps automation platform.</p>
+                    </div>
+                    <span class="welcome-icon">🤖</span>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>🤖</span>
+                        <p>AI Agent</p>
+                        <h2>Active</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>🔍</span>
+                        <p>Code Analysis</p>
+                        <h2>Ready</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>🐙</span>
+                        <p>GitHub Integration</p>
+                        <h2>Connected</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>🐳</span>
+                        <p>Docker</p>
+                        <h2>Enabled</h2>
+                    </div>
+
+                </div>
+
+                <div class="info-card">
+                    <h3>Platform Features</h3>
+                    <ul>
+                        <li>AI-powered DevOps planning</li>
+                        <li>GitHub source code analysis</li>
+                        <li>Automated code quality checks</li>
+                        <li>Docker-based deployment</li>
+                        <li>GitHub Actions CI pipeline</li>
+                    </ul>
+                </div>
+
+            </section>
+
+
+            <!-- AI Agent Section -->
+            <section id="agent" class="content-section">
+
+                <div class="section-heading">
+                    <h2>🤖 AI DevOps Agent</h2>
+                    <p>Describe your DevOps task and let AI generate an execution plan.</p>
+                </div>
+
+                <div class="form-card">
+
+                    <label for="instruction">Enter your DevOps instruction</label>
+
+                    <textarea
+                        id="instruction"
+                        placeholder="Example: Analyze my project and suggest a Docker deployment strategy..."
+                    ></textarea>
+
+                    <button id="agent-btn" class="primary-btn">
+                        Generate AI Plan →
+                    </button>
+
+                </div>
+
+                <div id="agent-result" class="result-card hidden">
+                    <h3>AI Generated Plan</h3>
+                    <pre id="agent-output"></pre>
+                </div>
+
+            </section>
+
+
+            <!-- GitHub Analysis Section -->
+            <section id="github" class="content-section">
+
+                <div class="section-heading">
+                    <h2>🐙 GitHub Code Analysis</h2>
+                    <p>Analyze Python source code directly from a GitHub repository.</p>
+                </div>
+
+                <div class="form-card">
+
+                    <label for="owner">GitHub Username / Owner</label>
+                    <input
+                        type="text"
+                        id="owner"
+                        placeholder="Example: harshshankhwar"
+                    >
+
+                    <label for="repo">Repository Name</label>
+                    <input
+                        type="text"
+                        id="repo"
+                        placeholder="Example: Agentic-DevOps-Automation-Platform"
+                    >
+
+                    <label for="path">File Path</label>
+                    <input
+                        type="text"
+                        id="path"
+                        placeholder="Example: backend/app/main.py"
+                    >
+
+                    <button id="github-btn" class="primary-btn">
+                        Analyze Code →
+                    </button>
+
+                </div>
+
+                <div id="github-result" class="result-card hidden">
+                    <h3>Code Analysis Results</h3>
+                    <pre id="github-output"></pre>
+                </div>
+
+            </section>
+
+            <footer>
+                Agentic AI-Based DevOps Automation Platform | Version 1.0.0
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+
+</body>
+</html>
